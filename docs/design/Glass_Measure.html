@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>계측 결과 · 글래스</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0B1212}
+a{color:#34D399}a:hover{color:#6EE7B7}
+</style>
+</helmet>
+<div style="min-height: 100%; background: radial-gradient(ellipse 60% 45% at 30% 30%, #10302A 0%, #0B1212 70%); color: #E8F0EE; font-family: 'Noto Sans KR', system-ui, sans-serif;">
+
+<header style="max-width: 1400px; margin: 0 auto; padding: 18px 28px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;">
+<div style="display: flex; align-items: center; gap: 12px;">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.3px;">FAB<span style="color: #34D399;">SIM</span></span>
+<span style="font-size: 13px; color: #9BB0AB;">05 증착 · PECVD SiO₂</span>
+</div>
+<nav style="display: flex; gap: 6px; padding: 6px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(14px);" aria-label="실습 단계">
+<a href="Glass_Concept.dc.html" style="padding: 10px 16px; border-radius: 999px; color: #9BB0AB; text-decoration: none; font-size: 14px;">개념</a>
+<a href="#predict" style="padding: 10px 16px; border-radius: 999px; color: #9BB0AB; text-decoration: none; font-size: 14px;">예측</a>
+<a href="Glass_Recipe.dc.html" style="padding: 10px 16px; border-radius: 999px; color: #9BB0AB; text-decoration: none; font-size: 14px;">레시피</a>
+<a href="Glass_Run.dc.html" style="padding: 10px 16px; border-radius: 999px; color: #9BB0AB; text-decoration: none; font-size: 14px;">운전</a>
+<a href="#result" style="padding: 10px 18px; border-radius: 999px; color: #06231B; background: #34D399; text-decoration: none; font-size: 14px; font-weight: 700; box-shadow: 0 0 18px rgba(52,211,153,0.55);">결과</a>
+</nav>
+<span style="font-size: 12px; color: #9BB0AB; padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.09);">수치는 예시값</span>
+</header>
+
+<div style="max-width: 1400px; margin: 0 auto; padding: 8px 28px 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+<div style="border-radius: 20px; padding: 18px; background: linear-gradient(135deg, rgba(52,211,153,0.85), rgba(16,185,129,0.25)); color: #06231B; box-shadow: 0 0 26px rgba(52,211,153,0.25);">
+<span style="font-size: 13px; font-weight: 500;">증착률 변화 (200 → 400)</span><br>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700;">+55%</span>
+</div>
+<div style="border-radius: 20px; padding: 18px; background: linear-gradient(135deg, rgba(34,211,238,0.85), rgba(14,165,233,0.25)); color: #02202A;">
+<span style="font-size: 13px; font-weight: 500;">최대 막 두께 · PM C</span><br>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700;">975</span> <span style="font-size: 14px;">nm</span>
+</div>
+<div style="border-radius: 20px; padding: 18px; background: linear-gradient(135deg, rgba(251,191,36,0.85), rgba(245,158,11,0.25)); color: #1F1503;">
+<span style="font-size: 13px; font-weight: 500;">최소 불균일도 · PM C</span><br>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700;">2.1</span> <span style="font-size: 14px;">%</span>
+</div>
+<div style="border-radius: 20px; padding: 18px; background: linear-gradient(135deg, rgba(167,139,250,0.85), rgba(139,92,246,0.25)); color: #160A33;">
+<span style="font-size: 13px; font-weight: 500;">내 예측 정답</span><br>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700;">1 / 2</span>
+</div>
+</div>
+
+<main style="max-width: 1400px; margin: 0 auto; padding: 0 28px 16px; display: flex; flex-wrap: wrap; gap: 18px; align-items: stretch;">
+
+<section style="flex: 999 1 620px; min-width: 0; border-radius: 24px; padding: 22px; background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(18px); box-shadow: 0 24px 48px rgba(0,0,0,0.4); display: flex; flex-direction: column; gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center;">
+<span style="font-size: 16px; font-weight: 700;">엘립소미터 분석</span>
+<div style="display: flex; gap: 14px; font-size: 12px; color: #CFDCD9;">
+<span style="display: inline-flex; align-items: center; gap: 6px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #34D399; box-shadow: 0 0 8px #34D399;"></span>증착률 Å/min</span>
+<span style="display: inline-flex; align-items: center; gap: 6px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FBBF24; box-shadow: 0 0 8px #FBBF24;"></span>불균일도 % (낮을수록 균일)</span>
+</div>
+</div>
+<svg viewBox="0 0 640 300" style="width: 100%; height: auto; display: block;" role="img" aria-label="TEOS 200, 300, 400 sccm에서 증착률 4200, 5400, 6500 Å/min으로 증가, 불균일도 3.2, 2.6, 2.1 퍼센트로 감소">
+<defs>
+<linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34D399" stop-opacity="0.35"></stop><stop offset="1" stop-color="#34D399" stop-opacity="0"></stop></linearGradient>
+<filter id="gl" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="3" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+</defs>
+<line x1="70" y1="250" x2="570" y2="250" stroke="rgba(255,255,255,0.1)"></line>
+<line x1="70" y1="195" x2="570" y2="195" stroke="rgba(255,255,255,0.05)" stroke-dasharray="3 5"></line>
+<line x1="70" y1="140" x2="570" y2="140" stroke="rgba(255,255,255,0.05)" stroke-dasharray="3 5"></line>
+<line x1="70" y1="85" x2="570" y2="85" stroke="rgba(255,255,255,0.05)" stroke-dasharray="3 5"></line>
+<line x1="70" y1="30" x2="570" y2="30" stroke="rgba(255,255,255,0.05)" stroke-dasharray="3 5"></line>
+<text x="62" y="254" fill="#9BB0AB" font-size="12" text-anchor="end">3000</text>
+<text x="62" y="144" fill="#9BB0AB" font-size="12" text-anchor="end">5500</text>
+<text x="62" y="34" fill="#9BB0AB" font-size="12" text-anchor="end">8000</text>
+<text x="578" y="254" fill="#9BB0AB" font-size="12">0</text>
+<text x="578" y="144" fill="#9BB0AB" font-size="12">2.5</text>
+<text x="578" y="34" fill="#9BB0AB" font-size="12">5 %</text>
+<path d="M120,197 C220,174 220,168 320,144 S420,116 520,96 L520,250 L120,250 Z" fill="url(#gArea)"></path>
+<path d="M120,197 C220,174 220,168 320,144 S420,116 520,96" fill="none" stroke="#34D399" stroke-width="3.5" filter="url(#gl)"></path>
+<path d="M120,109 C220,120 220,126 320,136 S420,150 520,158" fill="none" stroke="#FBBF24" stroke-width="3" stroke-dasharray="7 6" filter="url(#gl)"></path>
+<circle cx="120" cy="197" r="6" fill="#0B1212" stroke="#34D399" stroke-width="3"></circle>
+<circle cx="320" cy="144" r="6" fill="#0B1212" stroke="#34D399" stroke-width="3"></circle>
+<circle cx="520" cy="96" r="6" fill="#0B1212" stroke="#34D399" stroke-width="3"></circle>
+<circle cx="120" cy="109" r="5" fill="#FBBF24"></circle>
+<circle cx="320" cy="136" r="5" fill="#FBBF24"></circle>
+<circle cx="520" cy="158" r="5" fill="#FBBF24"></circle>
+<rect x="472" y="54" width="96" height="28" rx="8" fill="rgba(52,211,153,0.18)" stroke="rgba(52,211,153,0.6)"></rect>
+<text x="520" y="73" fill="#A7F3D0" font-size="13" text-anchor="middle">6,500 Å/min</text>
+<text x="120" y="222" fill="#6EE7B7" font-size="12" text-anchor="middle">4,200</text>
+<text x="320" y="168" fill="#6EE7B7" font-size="12" text-anchor="middle">5,400</text>
+<text x="120" y="96" fill="#FCD34D" font-size="12" text-anchor="middle">3.2%</text>
+<text x="320" y="124" fill="#FCD34D" font-size="12" text-anchor="middle">2.6%</text>
+<text x="520" y="180" fill="#FCD34D" font-size="12" text-anchor="middle">2.1%</text>
+<text x="120" y="272" fill="#E8F0EE" font-size="13" text-anchor="middle">PM A · 200</text>
+<text x="320" y="272" fill="#E8F0EE" font-size="13" text-anchor="middle">PM B · 300</text>
+<text x="520" y="272" fill="#E8F0EE" font-size="13" text-anchor="middle">PM C · 400</text>
+<text x="320" y="294" fill="#9BB0AB" font-size="11" text-anchor="middle">TEOS 유량 (sccm)</text>
+</svg>
+</section>
+
+<aside style="flex: 1 1 340px; min-width: 0; border-radius: 24px; padding: 22px; background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(18px); box-shadow: 0 24px 48px rgba(0,0,0,0.4); display: flex; flex-direction: column; gap: 16px;">
+<span style="font-size: 16px; font-weight: 700;">예측 채점</span>
+<div style="display: flex; gap: 18px; align-items: center;">
+<div style="flex: 0 0 auto; width: 120px; height: 120px; border-radius: 50%; background: conic-gradient(#A78BFA 0 50%, rgba(255,255,255,0.08) 50% 100%); display: grid; place-items: center; box-shadow: 0 0 30px rgba(167,139,250,0.25);" role="img" aria-label="예측 정답률 50%">
+<div style="width: 94px; height: 94px; border-radius: 50%; background: #0F1716; display: grid; place-items: center;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700;">50<span style="font-size: 14px;">%</span></span></div>
+</div>
+<span style="font-size: 13px; line-height: 1.7; color: #CFDCD9;">증착률 경향은 맞혔고, 균일도 경향은 반대로 예측했어요.</span>
+</div>
+<sc-for list="{{grades}}" as="g" hint-placeholder-count="2">
+<div style="border-radius: 16px; padding: 14px; background: {{g.bg}}; border: 1px solid {{g.border}}; display: flex; flex-direction: column; gap: 4px;">
+<span style="font-size: 13px; font-weight: 700; color: {{g.fg}};">{{g.icon}} {{g.q}}</span>
+<span style="font-size: 12px; color: #9BB0AB;">내 예측 {{g.mine}} · 결과 {{g.real}}</span>
+</div>
+</sc-for>
+<p style="margin: 0; font-size: 13px; line-height: 1.7; color: #9BB0AB;">이 시뮬레이터의 모델에서는 TEOS 공급이 늘수록 표면에 닿는 반응종이 많아져 증착률이 오르고, 공급 편차가 줄어 두께가 더 고르게 나옵니다.</p>
+</aside>
+</main>
+
+<div style="max-width: 1400px; margin: 0 auto; padding: 0 28px 36px; display: flex; flex-wrap: wrap; gap: 18px; align-items: stretch;">
+<section style="flex: 999 1 620px; min-width: 0; border-radius: 24px; padding: 22px; background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(18px); display: flex; flex-direction: column; gap: 14px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px;"><span style="font-size: 16px; font-weight: 700;">단면 · 막 두께</span><span style="font-size: 12px; color: #9BB0AB;">두께 = 증착률 × 90 s</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px;">
+<sc-for list="{{sems}}" as="s" hint-placeholder-count="3">
+<div style="border-radius: 18px; padding: 12px; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 10px;">
+<div style="height: 130px; border-radius: 12px; background: #050909; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden;" role="img" aria-label="{{s.aria}}">
+<div style="height: {{s.h}}px; background: linear-gradient(#6EE7B7, #10B981); box-shadow: 0 0 18px rgba(52,211,153,0.45); display: grid; place-items: center; font-size: 11px; font-weight: 700; color: #06231B;">SiO₂</div>
+<div style="height: 56px; background: #2B3533; display: grid; place-items: center; font-size: 11px; color: #CFDCD9;">Si</div>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 13px; color: #9BB0AB;">{{s.pm}}</span><span style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700;">{{s.t}} <span style="font-size: 12px; color: #9BB0AB;">nm</span></span></div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="flex: 1 1 340px; min-width: 0; border-radius: 24px; padding: 22px; background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(18px); display: flex; flex-direction: column; gap: 14px; align-items: center;">
+<span style="align-self: flex-start; font-size: 16px; font-weight: 700;">웨이퍼 두께 맵 · PM C</span>
+<div style="position: relative; width: 190px; height: 190px; border-radius: 50%; background: radial-gradient(circle, #34D399 0%, #10B981 45%, #065F46 100%); box-shadow: 0 0 40px rgba(52,211,153,0.3);" role="img" aria-label="중심이 약간 두껍고 가장자리로 갈수록 얇아지는 두께 분포">
+<sc-for list="{{pts}}" as="d" hint-placeholder-count="9">
+<span style="position: absolute; left: {{d.x}}px; top: {{d.y}}px; width: 8px; height: 8px; border-radius: 50%; background: #0B1212; border: 1.5px solid #E8F0EE;"></span>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #9BB0AB;"><span>얇음</span><span style="width: 120px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, #065F46, #34D399);"></span><span>두꺼움</span></div>
+<a href="Glass_Recipe.dc.html" style="align-self: stretch; text-align: center; padding: 14px; border-radius: 16px; border: 1px solid rgba(52,211,153,0.6); background: rgba(52,211,153,0.12); color: #A7F3D0; text-decoration: none; font-size: 14px; font-weight: 700;">조건 바꿔서 다시 실험</a>
+</section>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1060}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var sems = [
+      { pm: 'PM A · TEOS 200', t: '630', h: 30 },
+      { pm: 'PM B · TEOS 300', t: '810', h: 39 },
+      { pm: 'PM C · TEOS 400', t: '975', h: 47 }
+    ].map(function (s) { return Object.assign({ aria: s.pm + ' SiO₂ 두께 ' + s.t + ' nm 단면' }, s); });
+    var grades = [
+      { icon: '✓', q: 'TEOS↑ → 증착률', mine: '증가', real: '증가', bg: 'rgba(52,211,153,0.12)', border: 'rgba(52,211,153,0.45)', fg: '#6EE7B7' },
+      { icon: '✕', q: 'TEOS↑ → 균일도', mine: '덜 균일', real: '더 균일', bg: 'rgba(248,113,113,0.1)', border: 'rgba(248,113,113,0.45)', fg: '#FCA5A5' }
+    ];
+    var pts = [[91, 91], [91, 36], [91, 146], [36, 91], [146, 91], [52, 52], [130, 52], [52, 130], [130, 130]]
+      .map(function (p) { return { x: p[0], y: p[1] }; });
+    return { sems: sems, grades: grades, pts: pts };
+  }
+}
+</script>
+</body>
+</html>

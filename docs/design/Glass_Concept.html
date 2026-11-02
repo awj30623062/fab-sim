@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>증착 개념 설명 · 글래스</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0B1212}
+a{color:#34D399}a:hover{color:#6EE7B7}
+</style>
+</helmet>
+<div style="min-height: 100%; background: radial-gradient(ellipse 60% 30% at 70% 8%, #10302A 0%, #0B1212 70%); color: #E8F0EE; font-family: 'Noto Sans KR', system-ui, sans-serif;">
+
+<header style="max-width: 1400px; margin: 0 auto; padding: 18px 28px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;">
+<div style="display: flex; align-items: center; gap: 12px;">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.3px;">FAB<span style="color: #34D399;">SIM</span></span>
+<span style="font-size: 13px; color: #9BB0AB;">05-A 증착 · CVD (PECVD)</span>
+</div>
+<nav style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(14px);" aria-label="실습 단계">
+<a href="#concept" style="padding: 10px 18px; border-radius: 999px; color: #06231B; background: #34D399; text-decoration: none; font-size: 14px; font-weight: 700; box-shadow: 0 0 18px rgba(52,211,153,0.55);">개념</a>
+<a href="#predict" style="padding: 10px 16px; border-radius: 999px; color: #9BB0AB; text-decoration: none; font-size: 14px;">예측</a>
+<a href="Glass_Recipe.dc.html" style="padding: 10px 16px; border-radius: 999px; color: #9BB0AB; text-decoration: none; font-size: 14px;">레시피</a>
+<a href="Glass_Run.dc.html" style="padding: 10px 16px; border-radius: 999px; color: #9BB0AB; text-decoration: none; font-size: 14px;">운전</a>
+<a href="Glass_Measure.dc.html" style="padding: 10px 16px; border-radius: 999px; color: #9BB0AB; text-decoration: none; font-size: 14px;">결과</a>
+</nav>
+<span style="font-size: 13px; color: #9BB0AB;">읽는 시간 약 5분</span>
+</header>
+
+<section style="max-width: 1400px; margin: 0 auto; padding: 20px 28px 28px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-end; justify-content: space-between;">
+<div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: #34D399; letter-spacing: 1px;">CONCEPT · DEPOSITION</span>
+<h1 style="margin: 0; font-size: 40px; font-weight: 900; letter-spacing: -0.8px; line-height: 1.25;">플라즈마로 산화막을 쌓는<br>PECVD 증착</h1>
+<p style="margin: 0; max-width: 640px; font-size: 16px; line-height: 1.75; color: #B9CBC7;">TEOS 가스를 플라즈마로 분해해서 웨이퍼 위에 SiO₂ 막을 쌓는 공정이에요. 실습 전에 원리와 장비, 변수가 결과에 주는 영향을 먼저 살펴보세요.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px;" role="tablist" aria-label="증착 방식">
+<button type="button" role="tab" aria-selected="true" style="font: inherit; font-size: 14px; font-weight: 700; padding: 11px 18px; border-radius: 14px; border: 1px solid rgba(52,211,153,0.8); background: rgba(52,211,153,0.16); color: #A7F3D0; box-shadow: 0 0 16px rgba(52,211,153,0.3); cursor: pointer;">CVD · PECVD</button>
+<button type="button" role="tab" aria-selected="false" style="font: inherit; font-size: 14px; padding: 11px 18px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); color: #9BB0AB; cursor: pointer;">ALD <span style="font-size: 11px; padding: 2px 7px; border-radius: 999px; background: rgba(255,255,255,0.08); margin-left: 4px;">준비 중</span></button>
+<a href="#metal" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; padding: 11px 18px; border-radius: 14px; border: 1px dashed rgba(255,255,255,0.18); color: #9BB0AB; text-decoration: none;">PVD는 06 금속배선에서 →</a>
+</div>
+</div>
+<a href="#predict" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 24px; border-radius: 18px; background: linear-gradient(135deg, #34D399, #10B981); color: #06231B; font-size: 15px; font-weight: 700; text-decoration: none; box-shadow: 0 0 28px rgba(52,211,153,0.4);">다 읽었어요, 실습 시작
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</section>
+
+<div style="max-width: 1400px; margin: 0 auto; padding: 0 28px 48px; display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start;">
+
+<nav style="flex: 1 1 220px; max-width: 260px; min-width: 0; border-radius: 22px; padding: 18px; background: linear-gradient(160deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); display: flex; flex-direction: column; gap: 4px;" aria-label="목차">
+<span style="font-size: 12px; color: #9BB0AB; padding: 4px 10px 10px;">목차</span>
+<sc-for list="{{toc}}" as="t" hint-placeholder-count="8">
+<a href="#{{t.id}}" style="display: flex; gap: 10px; align-items: center; padding: 10px; border-radius: 12px; text-decoration: none; font-size: 14px; {{t.style}}"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; opacity: 0.7;">{{t.no}}</span>{{t.name}}</a>
+</sc-for>
+<div style="margin-top: 10px; padding: 12px; border-radius: 14px; background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.25); font-size: 12px; line-height: 1.6; color: #A7F3D0;">실습 중에도 오른쪽 위 <b>설명</b> 버튼으로 이 내용을 다시 열 수 있어요.</div>
+</nav>
+
+<main style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+
+<section id="methods" style="border-radius: 24px; padding: 24px; background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(16px); display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: #34D399;">00</span>
+<h2 style="margin: 0; font-size: 22px; font-weight: 700;">증착 방식 한눈에 비교</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+<sc-for list="{{methods}}" as="m" hint-placeholder-count="3">
+<div style="border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 10px; {{m.card}}">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700;">{{m.name}}</span><span style="font-size: 11px; padding: 4px 9px; border-radius: 999px; white-space: nowrap; {{m.badge}}">{{m.status}}</span></div>
+<span style="font-size: 13px; line-height: 1.65; color: #CFDCD9;">{{m.how}}</span>
+<div style="display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 13px;">
+<span style="color: #9BB0AB;">속도</span><span>{{m.speed}}</span>
+<span style="color: #9BB0AB;">단차 피복</span><span>{{m.step}}</span>
+<span style="color: #9BB0AB;">주 용도</span><span>{{m.use}}</span>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section id="why" style="border-radius: 24px; padding: 24px; background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(16px); display: flex; flex-wrap: wrap; gap: 24px; align-items: center;">
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 10px;">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: #34D399;">01</span>
+<h2 style="margin: 0; font-size: 22px; font-weight: 700;">이 공정은 왜 필요할까</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.8; color: #CFDCD9;">칩 안에는 금속 배선이 여러 층으로 쌓여 있고, 그 사이를 전기적으로 끊어주는 절연막이 필요해요. PECVD는 플라즈마의 도움으로 <b style="color: #6EE7B7;">400 °C 안팎의 비교적 낮은 온도</b>에서 막을 쌓을 수 있어서, 이미 만들어진 구조가 열로 손상되지 않게 하면서 절연막과 보호막을 올릴 때 써요.</p>
+</div>
+<div style="flex: 1 1 260px; min-width: 0; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);" role="img" aria-label="Si 기판 위 소자층, 그 위 금속 배선 사이를 SiO₂ 절연막이 채우고 있는 단면">
+<div style="height: 34px; background: linear-gradient(#6EE7B7, #10B981); display: grid; place-items: center; font-size: 12px; font-weight: 700; color: #06231B;">SiO₂ 절연막 ← 이번 공정</div>
+<div style="height: 30px; display: flex; gap: 0; background: linear-gradient(#6EE7B7, #10B981);">
+<span style="flex: 1 1 0;"></span><span style="flex: 1 1 0; background: #D4A72C;"></span><span style="flex: 1 1 0;"></span><span style="flex: 1 1 0; background: #D4A72C;"></span><span style="flex: 1 1 0;"></span><span style="flex: 1 1 0; background: #D4A72C;"></span><span style="flex: 1 1 0;"></span>
+</div>
+<div style="height: 26px; background: #22302E; display: grid; place-items: center; font-size: 12px; color: #9BB0AB;">소자층</div>
+<div style="height: 44px; background: #2B3533; display: grid; place-items: center; font-size: 12px; color: #CFDCD9;">Si 기판</div>
+<div style="padding: 8px 12px; background: rgba(0,0,0,0.3); font-size: 12px; color: #9BB0AB; display: flex; gap: 12px;"><span><span style="color: #D4A72C;">■</span> 금속 배선</span><span><span style="color: #34D399;">■</span> 증착 SiO₂</span></div>
+</div>
+</section>
+
+<section id="principle" style="border-radius: 24px; padding: 24px; background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(16px); display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: #34D399;">02</span>
+<h2 style="margin: 0; font-size: 22px; font-weight: 700;">원리: 가스가 막이 되기까지</h2>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+<sc-for list="{{flow}}" as="f" hint-placeholder-count="5">
+<li style="border-radius: 18px; padding: 16px; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 10px;">
+<span style="width: 34px; height: 34px; border-radius: 12px; display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; background: {{f.bg}}; color: {{f.fg}}; box-shadow: 0 0 14px {{f.bg}};">{{f.no}}</span>
+<span style="font-size: 15px; font-weight: 700;">{{f.name}}</span>
+<span style="font-size: 13px; line-height: 1.65; color: #B9CBC7;">{{f.desc}}</span>
+</li>
+</sc-for>
+</ol>
+<div style="padding: 14px 16px; border-radius: 16px; background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.3); font-size: 14px; line-height: 1.7; color: #DDD6FE;">열 CVD는 열 에너지로 가스를 분해하지만, PECVD는 <b>플라즈마의 전자가 분해를 대신</b>해줘서 온도를 낮출 수 있어요.</div>
+</section>
+
+<section id="equipment" style="border-radius: 24px; padding: 24px; background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(16px); display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: flex-end;">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: #34D399;">03</span>
+<h2 style="margin: 0; font-size: 22px; font-weight: 700;">장비 구성</h2>
+</div>
+<span style="font-size: 13px; color: #9BB0AB;">번호를 누르면 부품 설명이 열려요</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch;">
+<div style="flex: 1 1 380px; min-width: 0; position: relative; border-radius: 18px; background: #070C0C; border: 1px solid rgba(255,255,255,0.08); overflow: hidden;">
+<svg viewBox="0 0 440 320" style="width: 100%; height: auto; display: block;" role="img" aria-label="PECVD 챔버 단면: 위에 RF 발생기와 샤워헤드, 가운데 플라즈마, 아래 히터 위 웨이퍼, 오른쪽 아래 배기">
+<defs><filter id="pg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"></feGaussianBlur></filter></defs>
+<rect x="60" y="60" width="320" height="200" rx="18" fill="#0F1A19" stroke="#2C403C" stroke-width="2"></rect>
+<rect x="175" y="14" width="90" height="30" rx="8" fill="#161B22" stroke="#A78BFA" stroke-width="1.5"></rect>
+<text x="220" y="34" fill="#C4B5FD" font-size="12" text-anchor="middle">RF</text>
+<line x1="220" y1="44" x2="220" y2="78" stroke="#A78BFA" stroke-width="2"></line>
+<line x1="20" y1="90" x2="90" y2="90" stroke="#FBBF24" stroke-width="2"></line>
+<text x="22" y="82" fill="#FCD34D" font-size="11">가스</text>
+<rect x="90" y="78" width="260" height="14" rx="3" fill="#3A524D"></rect>
+<g fill="#0F1A19"><rect x="104" y="88" width="6" height="4"></rect><rect x="134" y="88" width="6" height="4"></rect><rect x="164" y="88" width="6" height="4"></rect><rect x="194" y="88" width="6" height="4"></rect><rect x="224" y="88" width="6" height="4"></rect><rect x="254" y="88" width="6" height="4"></rect><rect x="284" y="88" width="6" height="4"></rect><rect x="314" y="88" width="6" height="4"></rect></g>
+<ellipse cx="220" cy="148" rx="120" ry="38" fill="#A78BFA" opacity="0.5" filter="url(#pg)"></ellipse>
+<ellipse cx="220" cy="148" rx="80" ry="20" fill="#DDD6FE" opacity="0.35" filter="url(#pg)"></ellipse>
+<rect x="130" y="196" width="180" height="6" rx="2" fill="#34D399"></rect>
+<rect x="110" y="202" width="220" height="24" rx="5" fill="#2B3533"></rect>
+<line x1="350" y1="260" x2="350" y2="296" stroke="#484F58" stroke-width="2"></line>
+<line x1="350" y1="296" x2="420" y2="296" stroke="#484F58" stroke-width="2"></line>
+<circle cx="350" cy="280" r="9" fill="#161B22" stroke="#484F58" stroke-width="1.5"></circle>
+</svg>
+<sc-for list="{{parts}}" as="p" hint-placeholder-count="6">
+<button type="button" aria-label="{{p.name}}" style="position: absolute; left: {{p.x}}%; top: {{p.y}}%; transform: translate(-50%, -50%); width: 30px; height: 30px; border-radius: 50%; border: 0; font: inherit; font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; {{p.dot}}">{{p.no}}</button>
+</sc-for>
+</div>
+<div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
+<sc-for list="{{parts}}" as="p" hint-placeholder-count="6">
+<div style="border-radius: 14px; padding: 12px 14px; {{p.card}}">
+<div style="display: flex; gap: 10px; align-items: center;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700; color: #34D399;">{{p.no}}</span><span style="font-size: 14px; font-weight: 700;">{{p.name}}</span></div>
+<sc-if value="{{p.open}}" hint-placeholder-val="{{false}}"><p style="margin: 8px 0 0; font-size: 13px; line-height: 1.65; color: #CFDCD9;">{{p.desc}}</p></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="variables" style="border-radius: 24px; padding: 24px; background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(16px); display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: #34D399;">04</span>
+<h2 style="margin: 0; font-size: 22px; font-weight: 700;">핵심 변수와 영향</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px;">
+<sc-for list="{{vars}}" as="v" hint-placeholder-count="4">
+<div style="border-radius: 18px; padding: 16px; background: rgba(0,0,0,0.25); border: 1px solid {{v.border}}; display: flex; flex-direction: column; gap: 8px;">
+<div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 15px; font-weight: 700;">{{v.name}} <span style="color: #34D399;">↑</span></span><sc-if value="{{v.lab}}" hint-placeholder-val="{{false}}"><span style="font-size: 11px; padding: 3px 8px; border-radius: 999px; background: rgba(52,211,153,0.16); color: #6EE7B7;">이번 실험 변수</span></sc-if></div>
+<span style="font-size: 13px; line-height: 1.65; color: #CFDCD9;">{{v.effect}}</span>
+<span style="font-size: 12px; line-height: 1.6; color: #9BB0AB;">주의: {{v.care}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section id="model" style="border-radius: 24px; padding: 24px; background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(16px); display: flex; flex-direction: column; gap: 14px;">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: #34D399;">05</span>
+<h2 style="margin: 0; font-size: 22px; font-weight: 700;">이 시뮬레이터가 쓰는 수식</h2>
+</div>
+<div style="border-radius: 18px; padding: 20px; background: rgba(0,0,0,0.3); border: 1px solid rgba(52,211,153,0.3); font-family: 'Space Grotesk', sans-serif; font-size: 22px; text-align: center; color: #E8F0EE; box-shadow: inset 0 0 30px rgba(52,211,153,0.08);">R = A · <span style="color: #FCD34D;">F/(F+F₀)</span> · <span style="color: #C4B5FD;">P/(P+P₀)</span> · <span style="color: #67E8F9;">e<sup style="font-size: 13px;">−Eₐ/RT</sup></span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-size: 13px; line-height: 1.6; color: #CFDCD9;">
+<span><b style="color: #FCD34D;">TEOS 항</b> 적을 땐 비례해서 늘고, 많아지면 포화</span>
+<span><b style="color: #C4B5FD;">RF 항</b> 전력이 클수록 분해가 늘다가 포화</span>
+<span><b style="color: #67E8F9;">온도 항</b> 플라즈마가 반응을 주도해 영향이 작음</span>
+</div>
+<span style="font-size: 13px; color: #9BB0AB;">막 두께 = 증착률 R × 증착 시간. 계수 A, F₀, P₀, Eₐ는 공개 자료 범위에 맞춘 값이며, 실제 장비의 정확한 값이 아니라 경향을 보여주기 위한 모델이에요.</span>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch;">
+<section id="defects" style="flex: 1 1 380px; min-width: 0; border-radius: 24px; padding: 24px; background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(16px); display: flex; flex-direction: column; gap: 12px;">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: #34D399;">06</span>
+<h2 style="margin: 0; font-size: 22px; font-weight: 700;">자주 생기는 불량</h2>
+<sc-for list="{{defects}}" as="d" hint-placeholder-count="3">
+<div style="border-radius: 16px; padding: 14px; background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(248,113,113,0.12)); border: 1px solid rgba(248,113,113,0.25); display: flex; flex-direction: column; gap: 4px;">
+<span style="font-size: 14px; font-weight: 700; color: #FCA5A5;">{{d.name}}</span>
+<span style="font-size: 13px; line-height: 1.6; color: #CFDCD9;">원인: {{d.cause}}</span>
+<span style="font-size: 13px; line-height: 1.6; color: #A7F3D0;">대책: {{d.fix}}</span>
+</div>
+</sc-for>
+</section>
+
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+<section id="career" style="border-radius: 24px; padding: 24px; background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(16px); display: flex; flex-direction: column; gap: 10px;">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: #34D399;">07</span>
+<h2 style="margin: 0; font-size: 22px; font-weight: 700;">실무 연결</h2>
+<p style="margin: 0; font-size: 14px; line-height: 1.75; color: #CFDCD9;">증착 공정 엔지니어는 레시피를 조정해 두께, 균일도, 막질을 목표 범위 안에 맞춰요. 소재 쪽에서는 TEOS 같은 전구체의 순도와 반응성이 막질을 좌우하는 핵심이에요.</p>
+</section>
+<section id="refs" style="border-radius: 24px; padding: 24px; background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(16px); display: flex; flex-direction: column; gap: 10px;">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: #34D399;">08</span>
+<h2 style="margin: 0; font-size: 22px; font-weight: 700;">참고자료</h2>
+<ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.8; color: #CFDCD9;">
+<li>수업 교재 · 강의 노트 [자료명 추가]</li>
+<li>Plummer 외, Silicon VLSI Technology · CVD 장</li>
+<li>모델 계수 출처 논문 [추가 예정]</li>
+</ul>
+</section>
+</div>
+</div>
+
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2350}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var names = [['methods', '증착 방식 비교'], ['why', '왜 필요할까'], ['principle', '원리'], ['equipment', '장비 구성'], ['variables', '변수와 영향'], ['model', '수식'], ['defects', '불량'], ['career', '실무 연결'], ['refs', '참고자료']];
+    var toc = names.map(function (n, i) {
+      return { id: n[0], name: n[1], no: '0' + i,
+        style: i === 0 ? 'background: rgba(52,211,153,0.14); color: #A7F3D0; font-weight: 700;' : 'color: #B9CBC7;' };
+    });
+    var flow = [
+      { no: '1', name: '가스 공급', desc: 'TEOS와 O₂가 샤워헤드를 통해 챔버에 고르게 들어와요.', bg: 'rgba(251,191,36,0.3)', fg: '#FCD34D' },
+      { no: '2', name: '플라즈마 분해', desc: 'RF 전력이 만든 플라즈마가 TEOS를 반응성 높은 조각으로 쪼개요.', bg: 'rgba(167,139,250,0.3)', fg: '#DDD6FE' },
+      { no: '3', name: '표면 흡착', desc: '쪼개진 반응종이 웨이퍼 표면에 달라붙어요.', bg: 'rgba(34,211,238,0.3)', fg: '#A5F3FC' },
+      { no: '4', name: '막 성장', desc: '표면에서 반응이 일어나며 SiO₂ 막이 한 층씩 자라요.', bg: 'rgba(52,211,153,0.3)', fg: '#A7F3D0' },
+      { no: '5', name: '부산물 배기', desc: '반응 후 남은 가스는 펌프로 빠져나가 정화 장치로 가요.', bg: 'rgba(255,255,255,0.12)', fg: '#E8F0EE' }
+    ];
+    var raw = [
+      ['RF 발생기', '플라즈마를 만드는 고주파 전력을 공급해요.', 50, 9.4],
+      ['샤워헤드', '구멍이 촘촘한 판으로 가스를 웨이퍼 위에 고르게 뿌려요. 위쪽 전극 역할도 해서, 구멍 배치가 막 두께 균일도에 직접 영향을 줘요.', 74, 26.6],
+      ['플라즈마 영역', '전자가 가스 분자와 부딪혀 분해가 일어나는 곳이에요.', 50, 46],
+      ['웨이퍼 · 히터', '웨이퍼를 공정 온도로 데우고, 아래쪽 전극 역할을 해요.', 75, 66],
+      ['스로틀 밸브', '배기량을 조절해서 챔버 압력을 일정하게 유지해요.', 72, 87.5],
+      ['가스 라인 · MFC', '각 가스의 유량을 설정값대로 정밀하게 흘려보내요.', 6.5, 22]
+    ];
+    var parts = raw.map(function (r, i) {
+      var open = i === 1;
+      return { no: String(i + 1), name: r[0], desc: r[1], x: r[2], y: r[3], open: open,
+        dot: open ? 'background: #34D399; color: #06231B; box-shadow: 0 0 0 6px rgba(52,211,153,0.25), 0 0 18px #34D399;' : 'background: rgba(11,18,18,0.85); color: #A7F3D0; border: 1.5px solid rgba(52,211,153,0.7);',
+        card: open ? 'background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.5);' : 'background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.06);' };
+    });
+    var vars = [
+      { name: 'TEOS 유량', effect: '반응 원료가 많아져 증착률이 올라가요. 많아질수록 증가 폭은 줄어들어요.', care: '너무 많으면 기상 반응으로 파티클이 생길 수 있어요.', lab: true, border: 'rgba(52,211,153,0.45)' },
+      { name: 'RF 전력', effect: '가스 분해가 활발해져 증착률이 오르고 막이 더 치밀해지는 경향이 있어요.', care: '과하면 플라즈마 손상이나 아킹이 생길 수 있어요.', lab: false, border: 'rgba(255,255,255,0.08)' },
+      { name: '온도', effect: '막질(밀도)이 좋아지는 쪽으로 작용해요. 증착률에 주는 영향은 상대적으로 작아요.', care: '하부 구조가 견딜 수 있는 온도 한계가 있어요.', lab: false, border: 'rgba(255,255,255,0.08)' },
+      { name: '압력', effect: '플라즈마가 퍼지는 모양이 달라져 두께 균일도에 영향을 줘요.', care: '범위를 벗어나면 플라즈마가 불안정해져요.', lab: false, border: 'rgba(255,255,255,0.08)' }
+    ];
+    var defects = [
+      { name: '파티클', cause: '기상에서 미리 반응한 입자, 챔버 벽에 쌓인 막이 떨어짐', fix: '퍼지 강화, 주기적 챔버 클리닝' },
+      { name: '두께 불균일', cause: '가스 분포나 플라즈마 밀도가 웨이퍼 위치마다 다름', fix: '압력, 전극 간격, 가스 유량 조정' },
+      { name: '단차 피복 불량', cause: '배선 사이 좁은 틈의 측면·바닥에 막이 얇게 쌓임', fix: '공정 조건 조정, 필요 시 다른 증착 방식 검토' }
+    ];
+    var methods = [
+      { name: 'CVD', status: '지금 실습', how: '가스의 화학 반응으로 막을 만들어요. 이번 실습의 PECVD는 플라즈마로 반응을 도와 온도를 낮춘 방식이에요.', speed: '빠름 ~ 보통', step: '보통 ~ 좋음', use: 'SiO₂, SiN 절연막',
+        card: 'background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.5); box-shadow: 0 0 22px rgba(52,211,153,0.15);', badge: 'background: #34D399; color: #06231B; font-weight: 700;' },
+      { name: 'ALD', status: '다음 추가', how: '전구체를 번갈아 넣어 한 원자층씩 쌓아요. 표면이 다 덮이면 반응이 스스로 멈추는 자기 제한 반응이 핵심이에요.', speed: '매우 느림', step: '매우 좋음', use: 'High-k 절연막, 깊고 좁은 구조',
+        card: 'background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08);', badge: 'background: rgba(34,211,238,0.16); color: #67E8F9;' },
+      { name: 'PVD', status: '06 금속배선에서', how: '타깃에 이온을 부딪혀 원자를 떼어내 웨이퍼에 쌓아요(스퍼터링). 원자가 직진해서 좁은 홈 안쪽은 얇게 덮여요.', speed: '빠름', step: '나쁨 (직진성)', use: '금속막 (Al, Ti/TiN, Cu 시드)',
+        card: 'background: rgba(0,0,0,0.25); border: 1px dashed rgba(255,255,255,0.16);', badge: 'background: rgba(251,191,36,0.16); color: #FCD34D;' }
+    ];
+    return { toc: toc, flow: flow, parts: parts, vars: vars, defects: defects, methods: methods };
+  }
+}
+</script>
+</body>
+</html>
