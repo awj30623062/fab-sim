@@ -1,0 +1,31 @@
+/* 글래스 테마 디자인 토큰. 변수 이름이 곧 Tailwind 클래스가 된다.
+   예: --color-emerald → text-emerald, bg-emerald */
+@theme {
+  --color-*: initial; /* Tailwind 기본 색은 쓰지 않는다 */
+  --color-canvas: #0B1212; /* 배경 */
+  --color-body: #E8F0EE; /* 본문 글자 */
+  --color-muted: #9BB0AB; /* 보조 글자 */
+  --color-emerald: #34D399; /* 메인 포인트: 활성 탭, 주요 버튼, 글로우 */
+  --color-cyan: #22D3EE; /* 보조 */
+  --color-amber: #FBBF24; /* TEOS·실험 변수 강조 */
+  --color-violet: #A78BFA; /* 플라즈마·RF */
+  --color-red: #F87171; /* 경고 */
+  --color-glass-border: rgba(255, 255, 255, 0.09); /* 패널 테두리 */
+
+  --font-sans: 'Noto Sans KR', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Noto Sans KR', sans-serif;
+
+  --background-image-canvas-glow: radial-gradient(
+    ellipse 70% 55% at 50% 38%,
+    #123A31 0%,
+    #0D1D1A 45%,
+    #0B1212 75%
+  );
+  --background-image-glass: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.04)
+  );
+
+  --shadow-glass: 0 20px 40px rgba(0, 0, 0, 0.35);
+}

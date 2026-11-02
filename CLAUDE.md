@@ -67,7 +67,7 @@
 src/
 ├─ app/                 라우팅, 공통 레이아웃
 ├─ ui/                  글래스 UI 키트 (GlassPanel, StatChip, Gauge, StepTabs, InfoTip,
-│                       RecipeTable, LineChart, CrossSection, WaferMap) + tokens.ts
+│                       RecipeTable, LineChart, CrossSection, WaferMap) + tokens.css
 ├─ engine/              공정과 무관한 엔진
 │   ├─ timeline.ts      레시피 → 시간별 실제값 (설정값을 1차 지연으로 따라감)
 │   ├─ noise.ts         재현 가능한 측정 노이즈

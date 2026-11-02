@@ -1,2 +1,2 @@
 @import 'tailwindcss';
-@config './ui/tokens.ts';
+@import './ui/tokens.css';
