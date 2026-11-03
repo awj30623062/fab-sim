@@ -16,6 +16,10 @@
   --color-white: #FFFFFF; /* bg-white/5처럼 투명도를 붙여 쓴다 */
   --color-black: #000000;
   --color-glass-border: rgba(255, 255, 255, 0.09); /* 패널 테두리 */
+  --color-cross-bg: #050909; /* 단면 배경 */
+  --color-silicon: #2B3533; /* 단면의 Si 기판 */
+  --color-map-low: #065F46; /* 웨이퍼 맵: 얇음. WaferMap이 캔버스 색으로도 읽는다 */
+  --color-map-high: #6EE7B7; /* 웨이퍼 맵: 두꺼움 */
   --color-on-emerald: #06231B; /* 칩 위 글자 */
   --color-on-cyan: #02202A;
   --color-on-amber: #1F1503;
@@ -58,6 +62,7 @@
   );
 
   --background-image-button-emerald: linear-gradient(135deg, #34D399, #10B981);
+  --background-image-film: linear-gradient(#6EE7B7, #10B981); /* 단면의 SiO₂ 막 */
 
   --shadow-glass: 0 20px 40px rgba(0, 0, 0, 0.35);
   --shadow-glow-emerald: 0 0 18px rgba(52, 211, 153, 0.5); /* 현재 단계 탭, 주요 버튼 */

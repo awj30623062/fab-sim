@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Button from '../ui/Button.tsx'
+import CrossSection from '../ui/CrossSection.tsx'
 import Gauge from '../ui/Gauge.tsx'
 import GlassPanel from '../ui/GlassPanel.tsx'
 import InfoTip from '../ui/InfoTip.tsx'
@@ -8,6 +9,7 @@ import RecipeTable, { type RecipeRow } from '../ui/RecipeTable.tsx'
 import StatChip from '../ui/StatChip.tsx'
 import StepTabs, { type Step } from '../ui/StepTabs.tsx'
 import TextInput from '../ui/TextInput.tsx'
+import WaferMap from '../ui/WaferMap.tsx'
 
 const recipeSteps = [
   { name: '안정화', color: 'cyan' },
@@ -48,6 +50,23 @@ const sampleRecipe: RecipeRow[] = [
     key: 'time', label: '시간', unit: 's', min: 1, max: 600, values: [20, 90, 20],
     tip: { title: '스텝 시간', body: '각 스텝을 유지하는 시간이에요. 막 두께 = 증착률 × 증착 스텝 시간.' },
   },
+]
+
+// 전시용 예시 측정점 13개 (mm, nm). 중심이 두껍고 가장자리로 갈수록 얇다
+const sampleWafer = [
+  { x: 0, y: 0, value: 985 },
+  { x: 75, y: 0, value: 978 },
+  { x: 0, y: 75, value: 980 },
+  { x: -75, y: 0, value: 976 },
+  { x: 0, y: -75, value: 979 },
+  { x: 130, y: 0, value: 958 },
+  { x: 92, y: 92, value: 955 },
+  { x: 0, y: 130, value: 961 },
+  { x: -92, y: 92, value: 952 },
+  { x: -130, y: 0, value: 950 },
+  { x: -92, y: -92, value: 954 },
+  { x: 0, y: -130, value: 957 },
+  { x: 92, y: -92, value: 960 },
 ]
 
 // 만든 UI 부품을 모아 보는 전시 화면
@@ -203,6 +222,31 @@ function UiKit() {
             right={{ name: '불균일도', unit: '%', color: 'amber', values: [3.2, 2.6, 2.1], min: 0, max: 5 }}
           />
           <p className="text-xs text-muted">불균일도는 값이 낮을수록 균일해요.</p>
+        </GlassPanel>
+
+        <GlassPanel className="flex flex-col gap-3 p-5">
+          <h2 className="text-[15px] font-bold">CrossSection</h2>
+          <p className="text-sm text-muted">
+            막 높이는 모두 같은 비율이라 나란히 비교할 수 있어요. 두께 = 증착률 × 증착
+            시간 (예: 4,200 Å/min × 90 s = 630 nm). 값은 모두 예시예요.
+          </p>
+          <CrossSection
+            items={[
+              { label: 'PM A · TEOS 200', thickness: 630 },
+              { label: 'PM B · TEOS 300', thickness: 810 },
+              { label: 'PM C · TEOS 400', thickness: 975 },
+            ]}
+          />
+        </GlassPanel>
+
+        <GlassPanel className="flex flex-col gap-3 p-5">
+          <h2 className="text-[15px] font-bold">WaferMap</h2>
+          <p className="text-sm text-muted">
+            측정점에 마우스를 올리거나 Tab으로 이동해 보세요. 각 영역은 가장 가까운
+            측정점의 두께로 칠해요. 아래쪽 V자 홈은 웨이퍼 방향을 알려주는 노치예요. 값은
+            모두 예시예요.
+          </p>
+          <WaferMap title="웨이퍼 두께 맵 · PM C (예시)" points={sampleWafer} />
         </GlassPanel>
       </div>
     </main>
