@@ -11,6 +11,10 @@
   --color-violet: #A78BFA; /* 플라즈마·RF */
   --color-red: #F87171; /* 경고 */
   --color-glass-border: rgba(255, 255, 255, 0.09); /* 패널 테두리 */
+  --color-on-emerald: #06231B; /* 칩 위 글자 */
+  --color-on-cyan: #02202A;
+  --color-on-amber: #1F1503;
+  --color-on-violet: #160A33;
 
   --font-sans: 'Noto Sans KR', system-ui, sans-serif;
   --font-display: 'Space Grotesk', 'Noto Sans KR', sans-serif;
@@ -25,6 +29,27 @@
     160deg,
     rgba(255, 255, 255, 0.08),
     rgba(255, 255, 255, 0.04)
+  );
+  /* 칩 그라데이션. 끝 투명도 0.8은 칩 끝에서도 글자 대비 4.5:1을 지키는 값이다 */
+  --background-image-chip-emerald: linear-gradient(
+    135deg,
+    rgba(52, 211, 153, 0.95),
+    rgba(52, 211, 153, 0.8)
+  );
+  --background-image-chip-cyan: linear-gradient(
+    135deg,
+    rgba(34, 211, 238, 0.95),
+    rgba(34, 211, 238, 0.8)
+  );
+  --background-image-chip-amber: linear-gradient(
+    135deg,
+    rgba(251, 191, 36, 0.95),
+    rgba(251, 191, 36, 0.8)
+  );
+  --background-image-chip-violet: linear-gradient(
+    135deg,
+    rgba(167, 139, 250, 0.95),
+    rgba(167, 139, 250, 0.8)
   );
 
   --shadow-glass: 0 20px 40px rgba(0, 0, 0, 0.35);
