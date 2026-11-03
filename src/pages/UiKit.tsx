@@ -3,14 +3,65 @@ import Button from '../ui/Button.tsx'
 import Gauge from '../ui/Gauge.tsx'
 import GlassPanel from '../ui/GlassPanel.tsx'
 import InfoTip from '../ui/InfoTip.tsx'
+import LineChart from '../ui/LineChart.tsx'
+import RecipeTable, { type RecipeRow } from '../ui/RecipeTable.tsx'
 import StatChip from '../ui/StatChip.tsx'
 import StepTabs, { type Step } from '../ui/StepTabs.tsx'
 import TextInput from '../ui/TextInput.tsx'
+
+const recipeSteps = [
+  { name: '안정화', color: 'cyan' },
+  { name: '증착', color: 'emerald' },
+  { name: '퍼지', color: 'violet' },
+] as const
+
+// 전시용 예시 레시피 (PM A). 범위(min~max)도 예시 값
+const sampleRecipe: RecipeRow[] = [
+  {
+    key: 'temp', label: '온도', unit: '°C', min: 100, max: 450, values: [400, 400, 400],
+    tip: { title: '온도 · 웨이퍼를 데우는 정도', body: '높을수록 표면 반응이 빨라져 증착률이 오르고 막이 치밀해져요.' },
+  },
+  {
+    key: 'pressure', label: '압력', unit: 'Torr', min: 0.5, max: 10, step: 0.1, values: [3, 3, 3],
+    tip: { title: '압력 · 챔버 안 가스의 압력', body: '플라즈마 밀도와 가스가 퍼지는 정도에 영향을 줘요.' },
+  },
+  {
+    key: 'teos', label: 'TEOS', unit: 'sccm', min: 0, max: 1000, varied: true, values: [200, 200, null],
+    tip: { title: 'TEOS · 막의 원료', body: 'SiO₂ 막의 실리콘을 공급하는 원료 가스예요. 이번 실험에서 바꾸는 값이에요.' },
+  },
+  {
+    key: 'o2', label: 'O₂', unit: 'sccm', min: 0, max: 10000, values: [6000, 6000, null],
+    tip: { title: 'O₂ · 산소 공급', body: 'TEOS와 반응해 SiO₂를 만드는 산소예요.' },
+  },
+  {
+    key: 'n2', label: 'N₂', unit: 'sccm', min: 0, max: 10000, values: [null, null, 3000],
+    tip: { title: 'N₂ · 퍼지 가스', body: '퍼지 스텝에서 챔버에 남은 가스를 밀어내요.' },
+  },
+  {
+    key: 'rf', label: 'RF 전력', unit: 'W', min: 0, max: 1000, values: [0, 450, 0],
+    tip: {
+      title: 'RF 전력 · 플라즈마의 세기',
+      body: 'TEOS를 분해하는 플라즈마를 얼마나 세게 켤지 정해요. 높일수록 증착률이 오르고 막이 치밀해지지만, 너무 높으면 아킹이 생길 수 있어요.',
+    },
+  },
+  {
+    key: 'time', label: '시간', unit: 's', min: 1, max: 600, values: [20, 90, 20],
+    tip: { title: '스텝 시간', body: '각 스텝을 유지하는 시간이에요. 막 두께 = 증착률 × 증착 스텝 시간.' },
+  },
+]
 
 // 만든 UI 부품을 모아 보는 전시 화면
 function UiKit() {
   const [progress, setProgress] = useState(69)
   const [step, setStep] = useState<Step>('레시피')
+  const [recipe, setRecipe] = useState(sampleRecipe)
+
+  const updateRecipe = (key: string, i: number, value: number | null) =>
+    setRecipe((rows) =>
+      rows.map((r) =>
+        r.key === key ? { ...r, values: r.values.map((v, j) => (j === i ? value : v)) } : r,
+      ),
+    )
 
   return (
     <main className="min-h-dvh bg-canvas-glow px-4 py-8 font-sans break-keep text-body">
@@ -125,6 +176,33 @@ function UiKit() {
               있어요.
             </InfoTip>
           </p>
+        </GlassPanel>
+
+        <GlassPanel className="flex flex-col gap-3 p-5">
+          <h2 className="text-[15px] font-bold">RecipeTable</h2>
+          <p className="text-sm text-muted">
+            스텝별 레시피 입력 표예요. 실험 변수 행은 초록으로 강조돼요. 값은 모두 예시예요.
+          </p>
+          <RecipeTable steps={recipeSteps} rows={recipe} onChange={updateRecipe} />
+        </GlassPanel>
+
+        <GlassPanel className="flex flex-col gap-3 p-5">
+          <h2 className="text-[15px] font-bold">LineChart</h2>
+          <p className="text-sm text-muted">
+            그래프 위에 마우스를 올리거나 Tab으로 이동해 보세요. 값은 모두 예시예요.
+          </p>
+          <LineChart
+            title="TEOS 유량에 따른 증착률과 불균일도 (예시)"
+            x={[
+              { label: 'PM A', sub: '200' },
+              { label: 'PM B', sub: '300' },
+              { label: 'PM C', sub: '400' },
+            ]}
+            xTitle="TEOS 유량 (sccm)"
+            left={{ name: '증착률', unit: 'Å/min', color: 'emerald', values: [4200, 5400, 6500], min: 3000, max: 8000 }}
+            right={{ name: '불균일도', unit: '%', color: 'amber', values: [3.2, 2.6, 2.1], min: 0, max: 5 }}
+          />
+          <p className="text-xs text-muted">불균일도는 값이 낮을수록 균일해요.</p>
         </GlassPanel>
       </div>
     </main>
