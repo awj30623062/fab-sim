@@ -1,2 +1,14 @@
 @import 'tailwindcss';
 @import './ui/tokens.css';
+
+@layer base {
+  /* 키보드로 이동할 때 어디에 있는지 보이게 */
+  :focus-visible {
+    outline: 2px solid var(--color-emerald);
+    outline-offset: 2px;
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+}
